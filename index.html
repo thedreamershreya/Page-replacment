@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<link href="bootstrap.min.css" rel="stylesheet">
+
+<head>
+	<title>Page Replacement</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" /> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+	
+	 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+		<a class="navbar-brand main-head" href="#">Page Replacement Algorithms</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" >
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+
+
+	  </nav>
+<div class="container"> 
+	<div class="container-fluid centered ">
+	</div>
+	
+	
+	<div class="container-fluid">
+
+		<div class="centered" >
+			<p color = "white" size = "15px">Pick the page replacement algorithm you want</p><br>
+		</div>
+		<div class="btn-group" role="group" aria-label="Basic example" >
+			<button type="button" class="btn btn-secondary" onclick="change(0)">First-in First-out</button>
+			<button type="button" class="btn btn-secondary" onclick="change(1)">Least Recently Used</button>
+			<button type="button" class="btn btn-secondary" onclick="change(2)">Optimal page replacement</button>
+			<button type="button" class="btn btn-secondary" onclick="change(3)">Second Chance Algorithm</button>
+			<button type="button" class="btn btn-secondary" onclick="change(4)">Most Recently Used</button>
+		</div>
+	</div>
+   
+	
+
+	<section id="fif" style="display: none;">
+	 <div class=" container-fluid ">
+		
+		<div class="centered" style="margin-top:60px">
+			<p style="color:black" size="5px">First-In First-Out</p >
+		</div>
+	</div>
+	<br><br><br>
+	<form>
+		<div class=container-fluid>
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="number" id="frames1" class="form-control" placeholder="Enter the number of frames:">
+			</div>
+
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="text" id="rs1" class="form-control" placeholder="Enter the Reference string:">
+			</div>
+			<input type="button" id ="calcbtn1" style="margin-left:40px; margin-bottom:20px" class="btn btn-primary" onclick="fifo()"
+				value="Simulate"><br>
+			<input type="reset" style="margin-left:45%; margin-bottom:20px; display:none;" class="btn btn-outline-primary animated fadeIn" value="New Test Case" onClick="window.location.reload()" id="resetbtn1">
+			<div id="div" class="table-hover" style="width:80vw;margin:auto;text-align:center"></div>
+			<div id="sp1"></div>
+			<div id="sp2"></div>
+		</div>
+	</form>
+<div id="bottom1"></div>
+</section>
+
+	
+<section id="lru" style="display: none;">
+		<div class=" container-fluid">
+
+			<div class="centered" style="margin-top:60px">
+				<p style=" color:black" size="5px">Least Recently Used</p>
+			</div>
+			
+		</div>
+		<br><br><br>
+	<form>
+		<div class=container-fluid>
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="number" id="frames2" class="form-control" placeholder="Enter the number of frames:">
+			</div>
+
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="text" id="rs2" class="form-control" placeholder="Enter the Reference string:">
+			</div>
+			<input type="button" id ="calcbtn2" style="margin-left:40px; margin-bottom:20px" class="btn btn-primary" onclick="lru()"
+				value="Simulate"><br>
+			<input type="reset" style="margin-left:45%; margin-bottom:20px; display:none;" class="btn btn-outline-primary animated fadeIn" value="New Test Case" onClick="window.location.reload()" id="resetbtn2">
+			<div id="div1" class="table-hover" style="width:80vw;margin:auto;text-align:center"></div>
+			<div id="sp11"></div>
+			<div id="sp21"></div>
+		</div>
+	</form>
+<div id="bottom2"></div>
+</section>
+
+
+<section id="mru" style="display: none;">
+		<div class=" container-fluid">
+
+			<div class="centered" style="margin-top:60px">
+				<p style=" color:black" size="5px">Most Recently Used</p>
+			</div>
+		</div>
+		<br><br><br>
+	<form>
+		<div class=container-fluid>
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="number" id="frames3" class="form-control" placeholder="Enter the number of frames:">
+			</div>
+
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="text" id="rs3" class="form-control" placeholder="Enter the Reference string:">
+			</div>
+			<input type="button" id ="calcbtn3" style="margin-left:40px; margin-bottom:20px" class="btn btn-primary" onclick="mru()"
+				value="Simulate"><br>
+			<input type="reset" style="margin-left:45%; margin-bottom:20px; display:none;" class="btn btn-outline-primary animated fadeIn" value="New Test Case" onClick="window.location.reload()" id="resetbtn3">
+			<div id="div2" class="table-hover" style="width:80vw;margin:auto;text-align:center"></div>
+			<div id="sp12"></div>
+			<div id="sp22"></div>
+		</div>
+	</form>
+<div id="bottom3"></div>
+</section>
+
+
+<section id="opt" style="display: none;">
+		<div class=" container-fluid">
+
+			<div class="centered" style="margin-top:60px">
+				<p style=" color:black" size="5px">Least Recently Used</p>
+			</div>
+		</div>
+		<br><br><br>
+	<form>
+		<div class=container-fluid>
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="number" id="frames4" class="form-control" placeholder="Enter the number of frames:">
+			</div>
+
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="text" id="rs4" class="form-control" placeholder="Enter the Reference string:">
+			</div>
+			<input type="button" id ="calcbtn4" style="margin-left:40px; margin-bottom:20px" class="btn btn-primary" onclick="optimal()"
+				value="Simulate"><br>
+			<input type="reset" style="margin-left:45%; margin-bottom:20px; display:none;" class="btn btn-outline-primary animated fadeIn" value="New Test Case" onClick="window.location.reload()" id="resetbtn4">
+			<div id="div3" class="table-hover" style="width:80vw;margin:auto;text-align:center"></div>
+			<div id="sp13"></div>
+			<div id="sp23"></div>
+		</div>
+	</form>
+<div id="bottom4"></div>
+</section>
+
+
+<section id="sec" style="display: none;">
+		<div class=" container-fluid">
+
+			<div class="centered" style="margin-top:60px">
+				<p style=" color:black" size="5px">Second Chance Algorithm</p>
+			</div>
+		</div>
+		<br><br><br>
+	<form>
+		<div class=container-fluid>
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="number" id="frames5" class="form-control" placeholder="Enter the number of frames:">
+			</div>
+
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="text" id="rs5" class="form-control" placeholder="Enter the Reference string:">
+			</div>
+			<input type="button" id ="calcbtn5" style="margin-left:40px; margin-bottom:20px" class="btn btn-primary" onclick="sec()"
+				value="Simulate"><br>
+			<input type="reset" style="margin-left:45%; margin-bottom:20px; display:none;" class="btn btn-outline-primary animated fadeIn" value="New Test Case" onClick="window.location.reload()" id="resetbtn5">
+			<div id="div4" class="table-hover" style="width:80vw;margin:auto;text-align:center"></div>
+			<div id="sp14"></div>
+			<div id="sp24"></div>
+		</div>
+	</form>
+<div id="bottom5"></div>
+</section>
+   
+
+
+<section id="com" style="display: none;">
+		<div class=" container-fluid">
+
+			<div class="centered" style="margin-top:60px">
+				<p style=" color:black" size="5px">Comparison of Algorithm</p>
+			</div>
+		</div>
+		<br><br><br>
+	<form>
+		<div class=container-fluid>
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="number" id="frames6" class="form-control" placeholder="Enter the number of frames:">
+			</div>
+
+			<div class="form-group row" style="margin-left:40px;width:25vw;display:block">
+				<input type="text" id="rs6" class="form-control" placeholder="Enter the Reference string:">
+			</div>
+			<input type="button" id ="calcbtn5" style="margin-left:40px; margin-bottom:20px" class="btn btn-primary" onclick="comaprison()"
+				value="Simulate"><br>
+			<a href="#tutorSignupModal" class="btn btn-primary animated fadeIn"
+			style="margin-left:40px; margin-bottom:20px; width: 125px; display: none" value="Graph"
+			data-toggle="modal" style="text-decoration:none;" id="graphbtn">Graph</a>	
+			<input type="reset" style="margin-left:45%; margin-bottom:20px; display:none;" class="btn btn-outline-primary animated fadeIn" value="New Test Case" onClick="window.location.reload()" id="resetbtn6">
+			<div id="div5" class="table-hover table-responsive" style="width:80vw;margin:auto;text-align:center"></div>
+			
+		</div>
+	</form>
+<div id="bottom6">
+
+</div>
+<div id="tutorSignupModal"  >
+	<div class="modal-dialog modal-login">
+		<div class="modal-content" style="border: none;">
+			<div  id="chartContainer" >
+			</div>
+			<hr/>
+		</div>
+	</div>
+</div>
+</section>
+<br><br><br>
+
+</div>
+</body>
+<script src="index.js"></script>
+<script>
+	
+</script>
+<!-- <script type="text/javascript" src="index.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</html>
